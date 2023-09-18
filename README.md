@@ -39,6 +39,17 @@ The Recipe App is a web application that allows users to search for recipes, sav
   - Express.js
   - MongoDB (with Mongoose)
   - JWT (JSON Web Tokens) for authentication
+ 
+## Responsive Design
+
+This project has been tested and optimized for responsiveness on the following devices and resolutions:
+
+- Mobile View (480p)
+- 720p
+- 1080p
+- iPad (2732x2048)
+- MacBook (1440x823)
+
 
 ## Getting Started
 1. **Navigate to the backend folder and install backend dependencies:** npm install.
