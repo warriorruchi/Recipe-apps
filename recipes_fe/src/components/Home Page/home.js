@@ -49,6 +49,7 @@ function Home({ setUpdate }) {
       <div className="card-container">
         {data.map((e, i) => {
           return (
+            <>
             <ChildCard
               setUpdate={setUpdate}
               key={e.id}
@@ -56,6 +57,28 @@ function Home({ setUpdate }) {
               title={e.title}
               image={e.image}
             />
+            <ChildCard
+              setUpdate={setUpdate}
+              key={e.id}
+              id={e.id}
+              title={e.title}
+              image={e.image}
+            />
+            <ChildCard
+              setUpdate={setUpdate}
+              key={e.id}
+              id={e.id}
+              title={e.title}
+              image={e.image}
+            />
+            <ChildCard
+              setUpdate={setUpdate}
+              key={e.id}
+              id={e.id}
+              title={e.title}
+              image={e.image}
+            />
+            </>
           )
         })}
       </div>
