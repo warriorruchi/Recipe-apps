@@ -10,12 +10,14 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react"
 import axios from "axios"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
+
 const LoginForm = ({ setUpdate }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isSmallerThanSm] = useMediaQuery("(max-width: 30em)")
-  const navigate = useNavigate("")
+  let navigate=useNavigate()
+  
   let url = process.env.REACT_APP_URL
 
   const handleSubmit = (e) => {
@@ -28,6 +30,7 @@ const LoginForm = ({ setUpdate }) => {
       })
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token))
+        navigate("/")
         setUpdate((prev) => !prev)
       })
     console.log("Email:", email)

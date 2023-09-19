@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react"
 import "./home.css"
-import ChildCard from "../Card/card"
+import ChildCard from "../../Card/card"
 import { Flex, Spacer } from "@chakra-ui/react"
 import axios from "axios"
 // please send it
@@ -18,22 +18,13 @@ function Home({setUpdate}) {
           headers: { Authorization: `${token}` },
         })
         .then((res) => {
+          console.log(res.data)
           setData(res.data)
-          setUpdate((prev) => !prev)
+          setUpdate(prev => !prev)
         })
     }
   }, [searchQuery])
-  //   const data = value?.recipes || [] // Ensure data is defined or use an empty array
 
-  //   const filteredData = data.filter((recipe) => {
-  //     const title = recipe.title || "" // Use an empty string if title is undefined
-  //     const description = recipe.description || "" // Use an empty string if description is undefined
-
-  //     return (
-  //       title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  //       description.toLowerCase().includes(searchQuery.toLowerCase())
-  //     )
-  //   })
 
   return (
     <>
@@ -64,9 +55,10 @@ function Home({setUpdate}) {
             <ChildCard
               setUpdate={setUpdate}
               key={e.id}
-              Title={e.title}
-              img={e.image}
-              imgType={e.imageType}
+              id={e.id}
+              title={e.title}
+              image={e.image}
+              imageType={e.imageType}
             />
           )
         })}
