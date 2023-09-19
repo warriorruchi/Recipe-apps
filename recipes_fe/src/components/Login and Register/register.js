@@ -10,12 +10,14 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const RegisterForm = ({ setUpdate }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [isSmallerThanSm] = useMediaQuery("(max-width: 30em)")
+  let navigate=useNavigate()
   let url = process.env.REACT_APP_URL
 
   const handleSubmit = (e) => {
@@ -29,6 +31,7 @@ const RegisterForm = ({ setUpdate }) => {
       })
       .then((res) => {
         localStorage.setItem("token", JSON.stringify(res.data.token))
+        navigate("/")
         setUpdate((prev) => !prev)
       })
 

@@ -12,45 +12,46 @@ import {
   Image,
 } from "@chakra-ui/react"
 import axios from "axios"
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,useDisclosure
+} from '@chakra-ui/react'
 
 function FaviouateCard({
-  Title,
-  img,
-  imgType,
+  title,
+  image,
+  imageType,
+  id,
   setUpdate,
 }) {
   const [expanded, setExpanded] = useState(false)
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [view, setView] = useState([])
-  function handleFavourite() {
-    let token = JSON.parse(localStorage.getItem("token")) || ""
-    if (token !== "") {
-      axios
-        .post(
-          `${url}/recipes/recipebyid`,
-          { headers: { Authorization: token } },
-          { title, image, imageType, id }
-        )
-        .then((res) => {
-          setUpdate((prev) => !prev)
-          alert("added to favourites")
-        })
-    } else {
-      alert("not authorized")
-    }
-  }
+  let url=process.env.REACT_APP_URL
+
   function handleView() {
     if (expanded === true) {
       setExpanded(false)
     } else {
       setExpanded(true)
+      let token = JSON.parse(localStorage.getItem("token")) || ""
+      if(token!==""){
       axios
         .get(`${url}/recipes/recipebyid/${id}`, {
           headers: { Authorization: token },
         })
         .then((res) => {
+          console.log(res.data)
           setView(res.data)
+          onOpen()
           setUpdate((prev) => !prev)
         })
+      }
     }
   }
 
@@ -62,6 +63,8 @@ function FaviouateCard({
           headers: { Authorization: token },
         })
         .then((res) => {
+          setUpdate(prev => !prev)
+          onClose()
           alert("deleted from favourites")
         })
     } else {
@@ -73,57 +76,48 @@ function FaviouateCard({
       <Card maxW="sm">
         <CardBody>
           <Image
-            src={img}
+            src={image}
             alt="Green double couch with wooden legs"
             borderRadius="lg"
           />
 
           <Stack mt="6" spacing="3">
-            <Heading size="md">{Title}</Heading>
-            <Text>{imgType}</Text>
+            <Heading size="md">{title}</Heading>
+            <Text>{imageType}</Text>
           </Stack>
         </CardBody>
         <Divider />
         <CardFooter>
           <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue" onClick={handleView}>
-              View
-            </Button>
+          <Button  variant="solid" colorScheme="blue" onClick={handleView}>HandleView</Button>
+
+<Modal isOpen={isOpen} onClose={onClose}>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader>Modal Title</ModalHeader>
+    <ModalCloseButton />
+    <ModalBody>
+      <div dangerouslySetInnerHTML={{ __html:view.summary  }}/>
+      <div> {view&& view.id}</div>
+      <div>{view&& view.title}</div>
+      <div>{view&& view.image}</div>
+      <div>{view&& view.imageType}</div>
+    </ModalBody>
+
+    <ModalFooter>
+      <Button colorScheme='blue' mr={3} onClick={onClose}>
+        Close
+      </Button>
+      <Button variant='ghost' onClick={handleRemove}>delete</Button>
+    </ModalFooter>
+  </ModalContent>
+  </Modal>
             
             <Button variant="ghost" colorScheme="blue" onClick={handleRemove}>
               delete recipe
             </Button>
           </ButtonGroup>
         </CardFooter>
-
-        {/* {expanded && (
-          <div>
-            <h2>Additional Information</h2>
-            <h3>Ingredients:</h3>
-            <ul>
-              {Ingrediemts &&
-                Ingrediemts.map((ingredient, index) => (
-                  <li key={index}>{ingredient}</li>
-                ))}
-            </ul>
-            <h3>Instructions:</h3>
-            <ol>
-              {Instruction &&
-                Instruction.map((step, index) => <li key={index}>{step}</li>)}
-            </ol>
-            <h3>Nutritional Information:</h3>
-            <ul>
-              {Nut && (
-                <>
-                  <li>Calories: {Nut.calories}</li>
-                  <li>Protein: {Nut.protein}g</li>
-                  <li>Carbohydrates: {Nut.carbohydrates}g</li>
-                  <li>Fat: {Nut.fat}g</li>
-                </>
-              )}
-            </ul>
-          </div>
-        )} */}
       </Card>
     </>
   )
