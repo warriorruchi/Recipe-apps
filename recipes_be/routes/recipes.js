@@ -16,7 +16,8 @@ router.get("/search", authenticateToken, async (req, res) => {
   try {
     const { query } = req.query
     const response = await spoonacular.get("/complexSearch", {
-      params: { query, apiKey: "340a4f1903fa48c690292ff2432f2d1a" },
+      // params: { query, apiKey: "340a4f1903fa48c690292ff2432f2d1a" },
+      params: { query, apiKey: "c47b878a343f4f84b21f891b3c6d6195" },
     })
     const recipes = response.data.results
     res.json(recipes)

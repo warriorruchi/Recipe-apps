@@ -22,7 +22,8 @@ const PORT = process.env.PORT || 8000
 app.listen(PORT, (req, res) => {
   mongoose
     .connect(
-      "mongodb+srv://arshgoyal459:Zxcvbnm1@cluster0.0lsykzj.mongodb.net/ruchirecipies?retryWrites=true&w=majority"
+      //  "mongodb+srv://arshgoyal459:Zxcvbnm1@cluster0.0lsykzj.mongodb.net/ruchirecipies?retryWrites=true&w=majority"
+      "mongodb+srv://uparuchi:uparuchi123@cluster0.qarao7p.mongodb.net/ruchirecipies?retryWrites=true&w=majority"
     )
     .then(() => {
       console.log("Connected to MongoDB")

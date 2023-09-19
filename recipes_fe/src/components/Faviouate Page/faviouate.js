@@ -1,12 +1,11 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-import FaviouateCard from "../../Card/faviouatecard"
-import { Flex, Spacer } from "@chakra-ui/react"
-function Faviouate({ update,setUpdate }) {
+import FaviouateCard from "../Card/faviouatecard"
+function Faviouate({ update, setUpdate }) {
   const [data, setData] = useState([])
-  // const [searchResults, setSearchResults] = useState([]);
-  let url = process.env.REACT_APP_URL
+  let url = process.env.REACT_APP_URL;
+
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token")) || ""
     if (token !== "") {
@@ -16,15 +15,15 @@ function Faviouate({ update,setUpdate }) {
         })
         .then((res) => {
           setData(res.data)
-          
+
         })
     }
   }, [update])
-  
+
 
   return (
     <>
-      <div className="card-container">
+      <div className="fav-container">
         {data.map((e, i) => {
           return (
             <FaviouateCard

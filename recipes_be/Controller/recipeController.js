@@ -27,12 +27,11 @@ exports.getAllRecipes = async (req, res) => {
 };
 
 // Controller to retrieve a specific recipe by ID
-http://localhost:8000/api/recipie/recipebyid/${e.target.value}
 
 exports.getRecipeById = async (req, res) => {
     try {
         const { id } = req.params;
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=340a4f1903fa48c690292ff2432f2d1a`)
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c47b878a343f4f84b21f891b3c6d6195`)
         const recipe=await response.data
         if (!recipe) {
             return res.status(404).json({ message: 'Recipe not found' });

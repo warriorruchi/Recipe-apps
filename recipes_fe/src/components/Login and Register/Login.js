@@ -6,7 +6,6 @@ import {
   FormLabel,
   Input,
   Heading,
-  VStack,
   useMediaQuery,
 } from "@chakra-ui/react"
 import axios from "axios"
@@ -18,7 +17,7 @@ const LoginForm = ({ setUpdate }) => {
   const [isSmallerThanSm] = useMediaQuery("(max-width: 30em)")
   let navigate=useNavigate()
   
-  let url = process.env.REACT_APP_URL
+  let url = process.env.REACT_APP_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault()

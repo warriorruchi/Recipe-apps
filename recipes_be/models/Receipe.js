@@ -9,10 +9,10 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageType: {
-    type: String,
-    required: true,
-  },
+  // imageType: {
+  //   type: String,
+  //   required: true,
+  // },
   id:{
     type: String,
     required: true,

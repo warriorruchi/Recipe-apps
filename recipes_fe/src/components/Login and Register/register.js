@@ -18,14 +18,14 @@ const RegisterForm = ({ setUpdate }) => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [isSmallerThanSm] = useMediaQuery("(max-width: 30em)")
   let navigate=useNavigate()
-  let url = process.env.REACT_APP_URL
+
+  let url = process.env.REACT_APP_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault()
     // Add your registration logic here
-
     axios
-      .post(`${url}/users/reister`, {
+      .post(`${url}/users/register`, {
         email: email,
         password: password,
       })
@@ -96,4 +96,4 @@ const RegisterForm = ({ setUpdate }) => {
   )
 }
 
-export default RegisterForm
+export default RegisterForm;

@@ -3,22 +3,26 @@ import Home from "./components/Home Page/home"
 import LoginForm from "./components/Login and Register/Login"
 import RegisterForm from "./components/Login and Register/register"
 import Faviouate from "./components/Faviouate Page/faviouate"
-import {BrowserRouter, Routes,Route,Link, useNavigate} from "react-router-dom"
+import {Routes,Route,Link, useNavigate} from "react-router-dom"
+import './App.css'
 
 function App() {
-  const [update, setUpdate] = useState(false)
-  let navigate=useNavigate()
-  let token = JSON.parse(localStorage.getItem("token")) || ""
-  return (<>
+  const [update, setUpdate] = useState(false);
+  let navigate=useNavigate();
+  let token = JSON.parse(localStorage.getItem("token")) || "";
+   
+
+  return (
+  <>
     <nav>
-    {token!==""?<ul>
+    {token!==""?<ul className="nav-list">
         <li><Link to="/">Home</Link></li>  
         <li><Link to="/favourites">Favourites</Link></li>  
         <li onClick={()=>{
           localStorage.removeItem("token")
           navigate("/login")
           }}>Logout</li>  
-      </ul>:<ul>
+      </ul>:<ul className="nav-list">
         <li><Link to="/register">Register</Link></li>  
         <li><Link to="/login">Login</Link></li>  
           
@@ -37,4 +41,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
