@@ -2,7 +2,8 @@
 
 The Recipe App is a web application that allows users to search for recipes, save their favorite recipes, and view detailed information about recipes.
 
-![Recipe App Screenshot](/path/to/screenshot.png)
+![Recipe App Screenshot](https://github.com/warriorruchi/recipe-apps/assets/120272171/fc3f4b97-78fa-475b-9d69-6f39f1de4119)
+
 
 ## Table of Contents
 
@@ -28,11 +29,14 @@ The Recipe App is a web application that allows users to search for recipes, sav
 ## Technologies
 
 - **Frontend**:
+  **Deployment**: <a href="https://65098fa2a20b4e57cb8ee7b7--tangerine-hotteok-9c462e.netlify.app">link</a> 
   - React.js
   - HTML/CSS
   - JavaScript
   - Axios (for API requests)
   - React Router (for routing)
+    **Deployment**:https://65098fa2a20b4e57cb8ee7b7--tangerine-hotteok-9c462e.netlify.app
+    
 
 - **Backend**:
   - Node.js
@@ -69,8 +73,7 @@ This project has been tested and optimized for responsiveness on the following d
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/yourusername/recipe-app.git
+   git clone <a href="https://github.com/warriorruchi/recipe-apps">link</a> 
 
 ###  Usage
 - Register for an account or log in to an existing account.
