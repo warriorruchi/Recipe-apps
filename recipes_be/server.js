@@ -23,7 +23,7 @@ app.listen(PORT, (req, res) => {
   mongoose
   
     .connect(
-      "mongodb+srv://uparuchi:uparuchi123@cluster0.qarao7p.mongodb.net/"
+      "mongodb+srv://arshgoyal459:Zxcvbnm1@cluster0.0lsykzj.mongodb.net/ruchi?retryWrites=true&w=majority"
     )
     .then(() => {
       console.log("Connected to MongoDB")
